@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,8 +30,7 @@ Route::middleware(['auth', 'verified'])
     ->name("profile");
 });
 
-
-
-
+Route::resource("books", BookController::class)
+->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
