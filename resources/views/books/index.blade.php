@@ -1,6 +1,6 @@
 @extends("layouts.books")
 
-@section("title", "tutti i libri")
+@section("title")
 
 @section("content")
 
@@ -8,7 +8,7 @@
 <!-- container -->
  <div class="container">
     <div class="section my-4 text-center">
-        <h1 class="my-4">Libri</h1>
+        <h1 class="my-4">L'hybrary</h1>
         <a class="btn btn-outline-primary" href="{{ route("books.create") }}">Aggiungi</a>
     </div>
     <!-- qui devo aggiungere il form di ricerca -->

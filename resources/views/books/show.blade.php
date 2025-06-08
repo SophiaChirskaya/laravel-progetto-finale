@@ -34,6 +34,28 @@
 
      </div>
 
+    <div class="modal" id="exampleModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Elimina Libro</h5>
+        <button type="button" class="btn-close modal-btn" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+      </div>
+      <div class="modal-body">
+        <p>Sei sicuro di eliminare il libro?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-modal-secondary modal-btn" data-bs-dismiss="modal">Annulla</button>
+        <form action="{{ route("books.destroy", $book) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <input type="submit" class="btn btn-modal-danger modal-btn" value="Elimina definitivamente">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   </div>
 

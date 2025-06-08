@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view("books.create");
     }
 
     /**
@@ -30,7 +31,18 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newBook = new Book();
+
+        $newBook->title = $data['title'];
+        $newBook->author = $data['author'];
+        $newBook->year = $data['year'];
+        $newBook->content = $data['content'];
+
+        $newBook->save();
+
+        return redirect()->route('books.show', $newBook);
     }
 
     /**
@@ -44,9 +56,9 @@ class BookController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Book $book)
     {
-        //
+        return view("books.edit", compact("book"));
     }
 
     /**
