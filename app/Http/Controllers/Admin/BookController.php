@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -23,7 +24,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view("books.create");
+        $genres = Genre::all();
+        return view("books.create", compact("genres"));
     }
 
     /**
@@ -39,6 +41,7 @@ class BookController extends Controller
         $newBook->author = $data['author'];
         $newBook->year = $data['year'];
         $newBook->content = $data['content'];
+        $newBook->genre_id = $data['genre_id'];
 
         $newBook->save();
 
@@ -58,7 +61,8 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view("books.edit", compact("book"));
+        $genres = Genre::all();
+        return view("books.edit", compact("book", "genres"));
     }
 
     /**
@@ -72,6 +76,7 @@ class BookController extends Controller
         $book->author = $data['author'];
         $book->year = $data['year'];
         $book->content = $data['content'];
+        $book->genre_id = $data['genre_id'];
 
         $book->update();
 

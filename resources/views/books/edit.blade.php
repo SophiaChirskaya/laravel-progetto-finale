@@ -34,6 +34,15 @@
             <input type="text" name="year" id="year" class="form-control" value="{{ $book->year }}" required>
         </div>
 
+        <div class="form-group mt-3 d-flex flex-column">
+            <label for="genre_id">Genere</label>
+            <select name="genre_id" id="genre_id">
+            @foreach($genres as $genre)
+            <option value="{{ $genre->id }}" {{ $book->genre_id == $genre->id ? 'selected' : '' }}>{{ $genre->name }}</option>
+            @endforeach
+            </select>
+        </div>
+
         <div class="form-group  mt-3">
             <label for="content">Sinossi</label>
             <textarea name="content" id="content" class="form-control" rows="5" required>{{ $book->content }}</textarea>

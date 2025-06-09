@@ -21,6 +21,7 @@
      @endif
 
      <p class="fs-4">{{ $book->year }}</p>
+     <p class="fs-4">{{ $book->genre->name }}</p>
      <hr>
      <p class="lead">{{ $book->content }}</p>
      <hr class="my-2">
