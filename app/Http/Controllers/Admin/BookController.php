@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Genre;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -25,7 +26,10 @@ class BookController extends Controller
     public function create()
     {
         $genres = Genre::all();
-        return view("books.create", compact("genres"));
+
+        $types = Type::all();
+
+        return view("books.create", compact("genres", "types"));
     }
 
     /**
@@ -45,6 +49,12 @@ class BookController extends Controller
 
         $newBook->save();
 
+        if($request->has('types')){
+
+            $newBook->types()->attach($data['types']);
+
+        }
+
         return redirect()->route('books.show', $newBook);
     }
 
@@ -62,7 +72,9 @@ class BookController extends Controller
     public function edit(Book $book)
     {
         $genres = Genre::all();
-        return view("books.edit", compact("book", "genres"));
+        $genres = Type::all();
+
+        return view("books.edit", compact("book", "genres", "types"));
     }
 
     /**
@@ -79,6 +91,16 @@ class BookController extends Controller
         $book->genre_id = $data['genre_id'];
 
         $book->update();
+
+        if($request->has('types')) {
+
+            $book->types()->sync($data['types']);
+
+        } else {
+
+            $book->types()->detach();
+
+        }
 
         return redirect()->route("books.show", $book);
     }

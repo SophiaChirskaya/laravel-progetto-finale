@@ -27,6 +27,17 @@
      <hr class="my-2">
 
      <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+     @if(count($book->types) > 0 )
+      <small>
+      @foreach($book->types as $type)
+        <span class="badge" style="background-color: {{ $type->color }}">{{ $type->name }}</span>
+      @endforeach
+      </small>
+     @endif
+    </div>
+
+
+     <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
 
      <!-- modifica -->
       <a href="{{ route("books.edit", $book) }}" class="btn btn-outline-warning">Modifica</a>
@@ -35,7 +46,7 @@
 
      </div>
 
-    <div class="modal" id="exampleModal" tabindex="-1">
+  <div class="modal" id="exampleModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

@@ -48,6 +48,15 @@
             <textarea name="content" id="content" class="form-control" rows="5" required>{{ $book->content }}</textarea>
         </div>
 
+        <div class="form-group mt-3 d-flex flex-wrap">
+            @foreach($types as $type)
+            <div class="tag me-2">
+                <input type="checkbox" name="types[]" value="{{ $type->id }}" id="type-{{ $type->id }}" {{ $book->types->containes($type->id) ? 'checked' : ''}}>
+                <label for="type-{{ $type->id }}">{{ $type->name }}</label>
+            </div>
+            @endforeach
+        </div>
+
         <div class="form-group  mt-3">
             <label for="audio">Audio</label>
             <input type="file" name="audio" id="audio" class="form-control" required>
