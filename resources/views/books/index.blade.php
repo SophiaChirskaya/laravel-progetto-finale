@@ -8,7 +8,8 @@
 <!-- container -->
  <div class="container">
     <div class="section my-4 text-center">
-        <h1 class="my-4">L'hybrary</h1>
+        <h1 class="my-4">L'HYBRARY</h1>
+        <h3>La tua libreria ibrida</h3>
         <a class="btn btn-outline-primary" href="{{ route("books.create") }}">Aggiungi</a>
     </div>
     <!-- qui devo aggiungere il form di ricerca -->
