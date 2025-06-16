@@ -27,6 +27,12 @@
         <div class="form-group  mt-3">
             <label for="image">Immagine</label>
             <input type="file" name="image" id="image" class="form-control" required>
+
+             @if ($book->image)
+            <div class="my-4">
+                <img src="{{ asset('storage/' . $book->image) }}" alt="{{ $book->title }}" class="img-fluid w-50">
+            </div>
+            @endif
         </div>
 
         <div class="form-group  mt-3">
@@ -51,7 +57,7 @@
         <div class="form-group mt-3 d-flex flex-wrap">
             @foreach($types as $type)
             <div class="tag me-2">
-                <input type="checkbox" name="types[]" value="{{ $type->id }}" id="type-{{ $type->id }}" {{ $book->types->containes($type->id) ? 'checked' : ''}}>
+                <input type="checkbox" name="types[]" value="{{ $type->id }}" id="type-{{ $type->id }}" {{ $book->types->contains($type->id) ? 'checked' : ''}}>
                 <label for="type-{{ $type->id }}">{{ $type->name }}</label>
             </div>
             @endforeach

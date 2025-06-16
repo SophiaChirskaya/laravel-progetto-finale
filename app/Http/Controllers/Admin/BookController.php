@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\Genre;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -47,6 +48,12 @@ class BookController extends Controller
         $newBook->content = $data['content'];
         $newBook->genre_id = $data['genre_id'];
 
+        if(array_key_exists("image", $data)) {
+            $img_url = Storage::putFile("books", $data['image']);
+            
+            $newBook->image = $img_url;
+        }
+
         $newBook->save();
 
         if($request->has('types')){
@@ -72,7 +79,7 @@ class BookController extends Controller
     public function edit(Book $book)
     {
         $genres = Genre::all();
-        $genres = Type::all();
+        $types = Type::all();
 
         return view("books.edit", compact("book", "genres", "types"));
     }
@@ -89,6 +96,13 @@ class BookController extends Controller
         $book->year = $data['year'];
         $book->content = $data['content'];
         $book->genre_id = $data['genre_id'];
+
+        if(array_key_exists("image", $data)) {
+            Storage::delete($book->image);
+            $img_url = Storage::putFile("books", $data['image']);
+
+            $book->image = $img_url;
+        }
 
         $book->update();
 
@@ -110,6 +124,11 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
+        if($book->image) {
+            Storage::delete($book->image);
+        }
+
+        $book->types()->detach();
         $book->delete();
 
         return redirect()->route("books.index");
