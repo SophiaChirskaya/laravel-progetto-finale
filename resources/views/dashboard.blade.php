@@ -17,7 +17,10 @@
                     </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Sei loggato!') }}
+                    <div class="mt-3">
+                        <a href="{{ route("books.index") }}">Libri</a>
+                    </div>
                 </div>
             </div>
         </div>

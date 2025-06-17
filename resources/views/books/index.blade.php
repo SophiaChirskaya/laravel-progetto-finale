@@ -9,8 +9,8 @@
 <div class="hero-img position-relative text-blue text-center">
     <img src="{{ asset('hero.jpg') }}" alt="hero" class="img-fluid w-100 hero-banner">
     <div class="hero-text position-absolute top-50 start-50 translate-middle">
-        <h1>"Un libro è un giardino in tasca"</h1>
-        <h5>Neil Gilmor</h5>
+        <h1>"Il libro è un sogno che tieni tra le mani"</h1>
+        <h5>Neil Gaiman</h5>
         <p>In questa sezione puoi esplorare il nostro catalogo di libri, sfogliando tra titoli di ogni genere. Grazie ai filtri disponibili, puoi affinare la ricerca per autore, genere, anno di pubblicazione e altri criteri utili. Una volta individuato il libro di tuo interesse, potrai accedere alla sua scheda dettagliata per scoprire le edizioni disponibili. Ogni libro, infatti, può essere consultato in diverse versioni: paperbook, audiolibro, ebook e Braille, per garantire un’esperienza di lettura accessibile a tutti.</p>
     </div>
 </div>

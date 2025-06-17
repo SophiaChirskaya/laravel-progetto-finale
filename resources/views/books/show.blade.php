@@ -39,8 +39,14 @@
 
      <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
 
+     <!-- ascolta -->
+
+     <a href="{{ $book->audio }}" class="btn btn-outline-warning">Ascolta anteprima</a>
+
      <!-- modifica -->
       <a href="{{ route("books.edit", $book) }}" class="btn btn-outline-warning">Modifica</a>
+
+      <!-- elimina -->
 
       <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Elimina</button>
 
