@@ -11,7 +11,6 @@
         <p class="card-text"><strong>Autore: </strong>{{ $book->author }}</p>
         <p class="card-text"><strong>Anno: </strong>{{ $book->year }}</p>
         <p class="card-text"><strong>Genere: </strong>{{ $book->genre->name }}</p>
-
+        <a href="{{ route('books.show', $book->id) }}" class="btn btn-warning btn-sm">Dettagli</a>
     </div>
-
 </div>
